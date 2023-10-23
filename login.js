@@ -13,7 +13,9 @@ let registerButton = document.querySelector("#register")
 let email = document.querySelector("#email")
 let password = document.querySelector("#password")
 let masterkey = 0;
-
+localStorage.removeItem("userEmail")
+localStorage.removeItem("userDisplayName")
+localStorage.removeItem("masterkeyOjowa")
 
 let loginF = () => {
   if(localStorage.getItem("userEmail")) {
@@ -23,18 +25,17 @@ let loginF = () => {
   if(email.value === '') {
     alert('이메일 칸이 비어 있습니다.')
   }else {
-    firebase.auth().signInWithEmailAndPassword(email.value, password.value).then((result)=> {
+    if(email.value === 'guest@gmail.com' && password.value === "121212") {
       localStorage.setItem("userEmail" , email.value)
-      localStorage.setItem("userDisplayName" , result.user.displayName)
+      localStorage.setItem("userDisplayName" , "guest")
       localStorage.setItem("masterkeyOjowa" , '1')
       masterkey = 1;
       alert("성공적으로 로그인 되었습니다.")
       location.href = "./index.html";
-    }).catch((result) => {
+    }
       if(masterkey === 0) {
       alert('이메일이 존재하지 않거나 비밀번호가 일치하지 않습니다.')
-      }}
-    )
+      }    
   }
   // {
   //   if(email.value.search('@') === -1) {
