@@ -25,7 +25,7 @@ let loginF = () => {
   if(email.value === '') {
     alert('이메일 칸이 비어 있습니다.')
   }else {
-    if(email.value === 'guest@gmail.com' && password.value === "121212") {
+    if(email.value === 'guest@gmail.com' && password.value === "123123") {
       localStorage.setItem("userEmail" , email.value)
       localStorage.setItem("userDisplayName" , "guest")
       localStorage.setItem("masterkeyOjowa" , '1')
